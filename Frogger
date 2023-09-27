@@ -1,0 +1,373 @@
+//the x coordinates for all the lower road cars moving right
+int carx1_lower_right = 50;
+int carx2_lower_right = 175;
+int carx3_lower_right = 350;
+int carx4_lower_right = 550;
+
+//the y coordinate for all the lower road cars moving right
+int carsY_lower_right = 414;
+
+//colors for the cars moving right on the lower road
+color color1_lower_right;
+color color2_lower_right;
+color color3_lower_right;
+color color4_lower_right;
+
+//the x coordinates for all the lower road cars moving left
+int carx1_lower_left = 85;
+int carx2_lower_left = 250;
+int carx3_lower_left = 385;
+int carx4_lower_left = 580;
+//the y coordinate for all the lower road cars moving left
+int carsY_lower_left = 359;
+
+//colors for the cars moving left on the lower road
+color color1_lower_left;
+color color2_lower_left;
+color color3_lower_left;
+color color4_lower_left;
+
+// add variables for the cars on the upper road
+//the x coordinates for all the upper road cars moving right
+int carx1_upper_right = 50;
+int carx2_upper_right = 175;
+int carx3_upper_right = 350;
+int carx4_upper_right = 550;
+
+//the y coordinate for all the upper road cars moving right 
+int carsY_upper_right = 264;
+
+//colors for the cars moving right on the upper road
+color color1_upper_right;
+color color2_upper_right;
+color color3_upper_right;
+color color4_upper_right;
+
+//the x coordinates for all the upper road cars moving left
+int carx1_upper_left = 85;
+int carx2_upper_left = 250;
+int carx3_upper_left = 385;
+int carx4_upper_left = 580;
+
+//the y coordinate for all the upper road cars moving left
+int carsY_upper_left = 214;
+
+//colors for the cars moving left on the upper road
+color color1_upper_left;
+color color2_upper_left;
+color color3_upper_left;
+color color4_upper_left;
+
+//frog placement
+int frogX = 275;
+int frogY = 505;
+
+//life count
+int lives = 3;
+
+//score count
+int score = 0;
+
+void setup(){
+   size(600, 600);
+//lower car colors
+   color1_lower_right = color (250, 0, 0);
+   color2_lower_right = color (125, 125, 0);
+   color3_lower_right = color (0, 125, 125);
+   color4_lower_right = color (10, 10, 160);
+   color1_lower_left = color (2,20,250);
+   color2_lower_left = color (200, 12, 255);
+   color3_lower_left = color (205, 25, 0);
+   color4_lower_left = color (25, 255, 12);
+
+// upper car colors
+   color1_upper_right = color (250, 0, 0);
+   color2_upper_right = color (125, 125, 0);
+   color3_upper_right = color (0, 125, 125);
+   color4_upper_right = color (10, 10, 160);
+   color1_upper_left = color (2,20,250);
+   color2_upper_left = color (200, 12, 255);
+   color3_upper_left = color (205, 25, 0);
+   color4_upper_left = color (25, 255, 12);
+}
+ 
+void draw(){
+  color grass = color (84, 246, 52);
+  color road1 = color (162);
+  color road2 = color (240, 240, 7);
+  color lake = color (25,25,255);
+  color frog = color (34,139,34);
+  drawBackground(grass, lake, road1, road2, frog);
+  drawFrog (frog);
+  drawLives (lives, frog);
+  drawScore (score);
+
+//lower road, cars moving right
+  drawCar(carx1_lower_right, carsY_lower_right, color1_lower_right);
+  drawCar(carx2_lower_right, carsY_lower_right, color2_lower_right);
+  drawCar(carx3_lower_right, carsY_lower_right, color3_lower_right);
+  drawCar(carx4_lower_right, carsY_lower_right, color4_lower_right);
+
+//change the variables as appropriate to make the cars move
+   carx1_lower_right = carx1_lower_right + 1;
+   if  (carx1_lower_right == 600) {
+    carx1_lower_right = -50;
+   }
+   carx2_lower_right = carx2_lower_right + 1;
+   if  (carx2_lower_right == 600) {
+    carx2_lower_right = -50;
+   }
+   carx3_lower_right = carx3_lower_right + 1;
+   if  (carx3_lower_right == 600) {
+    carx3_lower_right = -50;
+   }
+   carx4_lower_right = carx4_lower_right + 1;
+   if  (carx4_lower_right == 600) {
+    carx4_lower_right = -50;
+   }
+ 
+//lower road, cars moving left
+   drawCar(carx1_lower_left, carsY_lower_left, color1_lower_left);
+   drawCar(carx2_lower_left, carsY_lower_left, color2_lower_left);
+   drawCar(carx3_lower_left, carsY_lower_left, color3_lower_left);
+   drawCar(carx4_lower_left, carsY_lower_left, color4_lower_left);
+
+//change the variables as appropriate to make the cars move
+  carx1_lower_left = carx1_lower_left - 1; 
+   if  (carx1_lower_left == -50) {
+    carx1_lower_left = 650;
+   }
+   carx2_lower_left = carx2_lower_left - 1;
+   if  (carx2_lower_left == -50) {
+    carx2_lower_left = 650;
+   }
+   carx3_lower_left = carx3_lower_left - 1;
+   if  (carx3_lower_left == -50) {
+    carx3_lower_left = 650;
+   }
+   carx4_lower_left = carx4_lower_left - 1;
+   if  (carx4_lower_left == -50) {
+    carx4_lower_left = 650;
+   }
+
+//upper road, cars moving right
+  drawCar(carx1_upper_right, carsY_upper_right, color1_upper_right);
+  drawCar(carx2_upper_right, carsY_upper_right, color2_upper_right);
+  drawCar(carx3_upper_right, carsY_upper_right, color3_upper_right);
+  drawCar(carx4_upper_right, carsY_upper_right, color4_upper_right);
+
+//change the variables as appropriate to make the cars move
+    carx1_upper_right = carx1_upper_right + 2;
+   if  (carx1_upper_right >= 600) {
+    carx1_upper_right = -50;
+   }
+   carx2_upper_right = carx2_upper_right + 2;
+   if  (carx2_upper_right >= 600) {
+    carx2_upper_right = -50;
+   }
+   carx3_upper_right = carx3_upper_right + 2;
+   if  (carx3_upper_right >= 600) {
+    carx3_upper_right = -50;
+   }
+   carx4_upper_right = carx4_upper_right + 2;
+   if  (carx4_upper_right >= 600) {
+    carx4_upper_right = -50;
+   }
+
+ 
+//upper road, cars moving left
+   drawCar(carx1_upper_left, carsY_upper_left, color1_upper_left);
+   drawCar(carx2_upper_left, carsY_upper_left, color2_upper_left);
+   drawCar(carx3_upper_left, carsY_upper_left, color3_upper_left);
+   drawCar(carx4_upper_left, carsY_upper_left, color4_upper_left);
+
+//change the variables as appropriate to make the cars move
+  carx1_upper_left = carx1_upper_left - 2; 
+   if  (carx1_upper_left <= -50) {
+    carx1_upper_left = 650;
+   }
+   carx2_upper_left = carx2_upper_left - 2;
+   if  (carx2_upper_left <= -50) {
+    carx2_upper_left = 650;
+   }
+   carx3_upper_left = carx3_upper_left - 2;
+   if  (carx3_upper_left <= -50) {
+    carx3_upper_left = 650;
+   }
+   carx4_upper_left = carx4_upper_left - 2;
+   if  (carx4_upper_left <= -50) {
+    carx4_upper_left = 650;
+   }
+   
+//lower road right collision
+   if (collisionCheck(carx1_lower_right, carsY_lower_right, 50, 20)){
+   lives -= 1;
+   frogX = 275;
+   frogY = 505;
+   }
+   if (collisionCheck(carx2_lower_right, carsY_lower_right, 50, 20)){
+   lives -= 1;
+   frogX = 275;
+   frogY = 505;
+   }
+   if (collisionCheck(carx3_lower_right, carsY_lower_right, 50, 20)){
+   lives -= 1;
+   frogX = 275;
+   frogY = 505;
+   }
+   if (collisionCheck(carx4_lower_right, carsY_lower_right, 50, 20)){
+   lives -= 1;
+   frogX = 275;
+   frogY = 505;
+   }
+//lower road left collision
+   if (collisionCheck(carx1_lower_left, carsY_lower_left, 50, 20)){
+   lives -= 1;
+   frogX = 275;
+   frogY = 505;
+   }
+   if (collisionCheck(carx2_lower_left, carsY_lower_left, 50, 20)){
+   lives -= 1;
+   frogX = 275;
+   frogY = 505;
+   }
+   if (collisionCheck(carx3_lower_left, carsY_lower_left, 50, 20)){
+   lives -= 1;
+   frogX = 275;
+   frogY = 505;
+   }
+   if (collisionCheck(carx4_lower_left, carsY_lower_left, 50, 20)){
+   lives -= 1;
+   frogX = 275;
+   frogY = 505;
+   }
+//upper road right collision
+   if (collisionCheck(carx1_upper_right, carsY_upper_right, 50, 20)){
+   lives -= 1;
+   frogX = 275;
+   frogY = 505;
+   }
+   if (collisionCheck(carx2_upper_right, carsY_upper_right, 50, 20)){
+   lives -= 1;
+   frogX = 275;
+   frogY = 505;
+   }
+   if (collisionCheck(carx3_upper_right, carsY_upper_right, 50, 20)){
+   lives -= 1;
+   frogX = 275;
+   frogY = 505;
+   }
+   if (collisionCheck(carx4_upper_right, carsY_upper_right, 50, 20)){
+   lives -= 1;
+   frogX = 275;
+   frogY = 505;
+   }
+//upper road left collision
+   if (collisionCheck(carx1_upper_left, carsY_upper_left, 50, 20)){
+   lives -= 1;
+   frogX = 275;
+   frogY = 505;
+   }
+   if (collisionCheck(carx2_upper_left, carsY_upper_left, 50, 20)){
+   lives -= 1;
+   frogX = 275;
+   frogY = 505;
+   }
+   if (collisionCheck(carx3_upper_left, carsY_upper_left, 50, 20)){
+   lives -= 1;
+   frogX = 275;
+   frogY = 505;
+   }
+   if (collisionCheck(carx4_upper_left, carsY_upper_left, 50, 20)){
+   lives -= 1;
+   frogX = 275;
+   frogY = 505;
+   }
+//winning points
+   if (collisionCheck(0, -50, 600, 100)){
+   score += 100;
+   frogX = 275;
+   frogY = 505;
+   }
+}
+
+boolean collisionCheck (int other_x, int other_y, int other_width, int other_height){
+   return (frogX < other_x + other_width) && (frogY < other_y + other_height)
+           && (frogX + 25 > other_x) && (frogY + 40 > other_y);
+}
+
+void drawBackground (color grass, color lake, color road1, color road2, color frog) {
+   //lake and two roads
+   noStroke();
+   fill (grass);
+   rect (0,0,600,600);
+   fill (lake);
+   ellipse (0,-50,600,100);
+   fill (road1);
+   rect (0, carsY_lower_right-65, 600, 100);
+   rect (0, carsY_upper_right-65, 600, 100);
+   fill (road2);
+   rect (0, carsY_upper_right+134.5, 600, 1.5);
+   rect (0, carsY_upper_right-15.5, 600, 1.5);
+}
+void drawFrog (color frog) {
+   fill (frog);
+   stroke (1);
+   ellipseMode (CORNER);
+   ellipse (frogX, frogY, 25, 40);
+}
+void drawCar(int carX, int  carY, color carColor){
+  fill(carColor);
+  rect(carX, carY, 50, 20);
+  if (lives <= 0) {
+  background (84, 246, 52);
+  textSize(40);
+  fill (0);
+  text ("Game Over!", 180, 260);
+  text ("Score: " +score, 185, 310);
+  }
+}
+
+void drawScore (int score){
+  fill (0);
+  text ("Score: " +score, 500, 525);
+}
+
+void drawLives (int lives, color frog){
+  fill (0);
+  text ("Lives: ", 10,525); 
+  
+  if (lives >= 3){
+  fill (frog);
+  ellipse (10,530,25,40);
+  ellipse (40,530,25,40);
+  ellipse (70,530,25,40);
+ }
+  else if (lives == 2){
+  fill (frog);
+  ellipse (10,530,25,40);
+  ellipse (40,530,25,40);
+ }  
+  else if (lives == 1){
+  fill (frog);
+  ellipse (10,530,25,40);
+ }
+}
+void keyPressed(){ 
+if (key == CODED) {
+  if (keyCode == UP) {
+             frogY= frogY - 50;
+  }
+  else if (keyCode == DOWN) {
+            frogY= frogY + 50;
+  }
+  else if (keyCode == LEFT) {
+             frogX= frogX - 25;
+  }
+  else if (keyCode == RIGHT ){
+             frogX= frogX + 25;
+  }
+ }
+}
+
+
